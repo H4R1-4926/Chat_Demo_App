@@ -12,6 +12,7 @@ class SignInPage extends StatelessWidget {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
+  final TextEditingController conPassController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +20,16 @@ class SignInPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: Container(
+          const Center(
+            child: SizedBox(
               height: 100,
               width: 100,
-              color: kGrey,
-              child: const Center(
-                child: Text('Logo'),
-              ),
+              child: Center(
+                  child: Icon(
+                Icons.message,
+                size: 85,
+                color: kGrey,
+              )),
             ),
           ),
           const SizedBox(
@@ -64,13 +67,6 @@ class SignInPage extends StatelessWidget {
             child: TextFormField(
               controller: passController,
               decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.visibility_outlined,
-                      color: kGrey,
-                    ),
-                  ),
                   fillColor: kWhite,
                   hintText: 'Password',
                   hintStyle: const TextStyle(color: kGrey),
@@ -89,14 +85,8 @@ class SignInPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextFormField(
+              controller: conPassController,
               decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.visibility_outlined,
-                      color: kGrey,
-                    ),
-                  ),
                   fillColor: kWhite,
                   hintText: 'Confirm Password',
                   hintStyle: const TextStyle(color: kGrey),
@@ -115,7 +105,6 @@ class SignInPage extends StatelessWidget {
           GestureDetector(
             onTap: () {
               signIn();
-              Get.to(() => const SplashSreen());
             },
             child: Container(
               height: 60,
@@ -125,7 +114,10 @@ class SignInPage extends StatelessWidget {
               child: const Center(
                 child: Text(
                   'SignIn',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: kDarkGrey),
                 ),
               ),
             ),
@@ -162,9 +154,13 @@ class SignInPage extends StatelessWidget {
   void signIn() {
     final email = emailController.text.trim();
     final password = passController.text.trim();
+
     final model = UserModel(email: email, password: password);
     if (email.isNotEmpty || password.isNotEmpty) {
       UserLog().signInUser(email: email, password: password, model: model);
+      Get.to(() => const SplashSreen());
+    } else {
+      Get.snackbar('failed', 'Check the details');
     }
   }
 }

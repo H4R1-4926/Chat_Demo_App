@@ -18,13 +18,14 @@ class LoginPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: Container(
+          const Center(
+            child: SizedBox(
               height: 100,
               width: 100,
-              color: kGrey,
-              child: const Center(
-                child: Text('Logo'),
+              child: Icon(
+                Icons.message,
+                size: 85,
+                color: kGrey,
               ),
             ),
           ),
@@ -63,13 +64,6 @@ class LoginPage extends StatelessWidget {
             child: TextFormField(
               controller: passController,
               decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.visibility_outlined,
-                      color: kGrey,
-                    ),
-                  ),
                   fillColor: kWhite,
                   hintText: 'Password',
                   hintStyle: const TextStyle(color: kGrey),
@@ -95,7 +89,6 @@ class LoginPage extends StatelessWidget {
           GestureDetector(
             onTap: () {
               logIn();
-              Get.to(() => const SplashSreen());
             },
             child: Container(
               height: 60,
@@ -105,7 +98,10 @@ class LoginPage extends StatelessWidget {
               child: const Center(
                 child: Text(
                   'Login',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: kDarkGrey),
                 ),
               ),
             ),
@@ -142,6 +138,11 @@ class LoginPage extends StatelessWidget {
   void logIn() {
     final email = emailController.text.trim();
     final password = passController.text.trim();
-    UserLog().logInUser(email: email, password: password);
+    if (email.isNotEmpty || password.isNotEmpty) {
+      UserLog().logInUser(email: email, password: password);
+      Get.to(() => const SplashSreen());
+    } else {
+      Get.snackbar('Failed', 'Check the details');
+    }
   }
 }

@@ -1,9 +1,12 @@
+import 'package:chat_app_demo/Application/DarkMode/dark_bloc.dart';
 import 'package:chat_app_demo/Application/Splash/splash_bloc.dart';
-import 'package:chat_app_demo/Core/color.dart';
+
+import 'package:chat_app_demo/Core/theme.dart';
 import 'package:chat_app_demo/Domain/Dependancy_injection/injectable.dart';
 
 import 'package:chat_app_demo/Presentation/Splash/splash.dart';
 import 'package:chat_app_demo/firebase_options.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
@@ -24,13 +27,24 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<SplashBloc>(),
-      child: GetMaterialApp(
-          theme: ThemeData(scaffoldBackgroundColor: kLightGrey),
-          darkTheme: ThemeData(scaffoldBackgroundColor: kLightBlack),
-          debugShowCheckedModeBanner: false,
-          home: const SplashSreen()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<SplashBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => DarkBloc(),
+        ),
+      ],
+      child: BlocBuilder<DarkBloc, DarkState>(
+        builder: (context, state) {
+          return GetMaterialApp(
+              theme: state.isTrue ? darkmode : lightmode,
+              darkTheme: darkmode,
+              debugShowCheckedModeBanner: false,
+              home: const SplashSreen());
+        },
+      ),
     );
   }
 }

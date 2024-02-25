@@ -1,13 +1,14 @@
 import 'package:chat_app_demo/Core/color.dart';
-import 'package:chat_app_demo/Infrastructure/User/user_repository.dart';
+
 import 'package:chat_app_demo/Presentation/ChatPage/chat_page.dart';
-import 'package:chat_app_demo/Presentation/Login/login.dart';
-import 'package:chat_app_demo/Presentation/Settings/settings.dart';
+
+import 'package:chat_app_demo/Presentation/Widget/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+
+import '../Settings/settings.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,105 +25,9 @@ class HomePage extends StatelessWidget {
           foregroundColor: kDarkGrey,
           centerTitle: true,
         ),
-        drawer: Drawer(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              DrawerHeader(
-                  child: Container(
-                height: 100,
-                width: 100,
-                color: kLightGrey,
-                child: const Center(child: Text('Logo')),
-              )),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                child: GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Icon(
-                        Icons.home,
-                        color: kGrey,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        'HOME',
-                        style: TextStyle(
-                            fontSize: 20, letterSpacing: 5, color: kGrey),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                child: GestureDetector(
-                  onTap: () => Get.to(() => const SettingsPage()),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Icon(
-                        Icons.settings,
-                        color: kGrey,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        'SETTINGS',
-                        style: TextStyle(
-                            fontSize: 20, letterSpacing: 5, color: kGrey),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 480),
-                child: GestureDetector(
-                  onTap: () {
-                    UserLog().logOut();
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginPage(),
-                        ),
-                        (route) => false);
-                  },
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Icon(
-                        Icons.logout_outlined,
-                        color: kGrey,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        'LOG OUT',
-                        style: TextStyle(
-                            fontSize: 20, letterSpacing: 5, color: kGrey),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+        drawer: DrawerWidget(
+          homeOnTap: () => Navigator.pop(context),
+          settingsOnTap: () => Get.to(() => const SettingsPage()),
         ),
         body: StreamBuilder(
           stream: FirebaseFirestore.instance.collection('users').snapshots(),

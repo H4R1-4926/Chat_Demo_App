@@ -4,6 +4,7 @@ import 'package:chat_app_demo/Presentation/ChatPage/chat_bubble.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class ChatPage extends StatelessWidget {
   ChatPage({super.key, required this.title, required this.reciverId});
@@ -18,7 +19,7 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           title,
-          style: const TextStyle(fontSize: 20, color: kDarkGrey),
+          style: const TextStyle(fontSize: 20, color: kGrey),
         ),
         centerTitle: true,
         forceMaterialTransparency: true,
@@ -88,21 +89,25 @@ class ChatPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20))),
           ),
         )),
-        ElevatedButton(
-            onPressed: () {
-              sendMsg();
-            },
-            style: const ButtonStyle(
-                fixedSize: MaterialStatePropertyAll(Size(60, 60)),
-                shape: MaterialStatePropertyAll(CircleBorder()),
-                backgroundColor: MaterialStatePropertyAll(Colors.greenAccent)),
-            child: const Center(
-              child: Icon(
-                Icons.arrow_upward,
-                color: kWhite,
-                size: 20,
+        GestureDetector(
+          onTap: () => sendMsg(),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: Container(
+              height: 50,
+              width: 50,
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.greenAccent),
+              child: const Center(
+                child: Icon(
+                  Icons.arrow_upward,
+                  color: kWhite,
+                  size: 30,
+                ),
               ),
-            ))
+            ),
+          ),
+        )
       ],
     );
   }

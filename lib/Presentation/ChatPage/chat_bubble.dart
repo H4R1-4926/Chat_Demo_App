@@ -23,7 +23,7 @@ class ChatBubble extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             text,
-            style: const TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18, color: kBlack),
           ),
         ),
       ),
