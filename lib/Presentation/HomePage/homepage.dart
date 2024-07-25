@@ -17,12 +17,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 7, 101, 179),
           title: const Text(
             'USERS',
-            style: TextStyle(color: kGrey, letterSpacing: 5),
+            style: TextStyle(letterSpacing: 5),
           ),
-          forceMaterialTransparency: true,
-          foregroundColor: kDarkGrey,
+          foregroundColor: kWhite,
           centerTitle: true,
         ),
         drawer: DrawerWidget(
@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
               );
             } else if (snapshot.data!.docs.isEmpty) {
               return const Center(
-                child: Text('empty'),
+                child: Text('No Contacts'),
               );
             }
 
@@ -56,12 +56,12 @@ class HomePage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => ChatPage(
-                              title: details['email'],
+                              title: details['name'],
                               reciverId: details['id'],
                             ),
                           )),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Card(
                           shadowColor: Colors.transparent,
                           margin: const EdgeInsets.symmetric(vertical: 9),
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                                   width: 32,
                                 ),
                                 Text(
-                                  details['email'],
+                                  details['name'],
                                   style: const TextStyle(fontSize: 15),
                                 ),
                               ],

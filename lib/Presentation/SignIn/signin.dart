@@ -10,6 +10,7 @@ import '../Splash/splash.dart';
 class SignInPage extends StatelessWidget {
   SignInPage({super.key});
 
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
   final TextEditingController conPassController = TextEditingController();
@@ -42,61 +43,89 @@ class SignInPage extends StatelessWidget {
           const SizedBox(
             height: 25,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              controller: emailController,
-              decoration: InputDecoration(
-                  fillColor: kWhite,
-                  hintText: 'Email',
-                  hintStyle: const TextStyle(color: kGrey),
-                  filled: true,
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
-                      borderRadius: BorderRadius.circular(15)),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(15))),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller: nameController,
+                decoration: InputDecoration(
+                    fillColor: kWhite,
+                    hintText: 'Name',
+                    hintStyle: const TextStyle(color: kGrey),
+                    filled: true,
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
+                        borderRadius: BorderRadius.circular(15)),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(15))),
+              ),
             ),
           ),
           const SizedBox(
             height: 15,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              controller: passController,
-              decoration: InputDecoration(
-                  fillColor: kWhite,
-                  hintText: 'Password',
-                  hintStyle: const TextStyle(color: kGrey),
-                  filled: true,
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
-                      borderRadius: BorderRadius.circular(15)),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(15))),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller: emailController,
+                decoration: InputDecoration(
+                    fillColor: kWhite,
+                    hintText: 'Email',
+                    hintStyle: const TextStyle(color: kGrey),
+                    filled: true,
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
+                        borderRadius: BorderRadius.circular(15)),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(15))),
+              ),
             ),
           ),
           const SizedBox(
             height: 15,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextFormField(
-              controller: conPassController,
-              decoration: InputDecoration(
-                  fillColor: kWhite,
-                  hintText: 'Confirm Password',
-                  hintStyle: const TextStyle(color: kGrey),
-                  filled: true,
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
-                      borderRadius: BorderRadius.circular(15)),
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(15))),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller: passController,
+                decoration: InputDecoration(
+                    fillColor: kWhite,
+                    hintText: 'Password',
+                    hintStyle: const TextStyle(color: kGrey),
+                    filled: true,
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
+                        borderRadius: BorderRadius.circular(15)),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(15))),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                controller: conPassController,
+                decoration: InputDecoration(
+                    fillColor: kWhite,
+                    hintText: 'Confirm Password',
+                    hintStyle: const TextStyle(color: kGrey),
+                    filled: true,
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
+                        borderRadius: BorderRadius.circular(15)),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(15))),
+              ),
             ),
           ),
           const SizedBox(
@@ -153,10 +182,14 @@ class SignInPage extends StatelessWidget {
 
   void signIn() {
     final email = emailController.text.trim();
+    final name = nameController.text.trim();
     final password = passController.text.trim();
 
-    final model = UserModel(email: email, password: password);
-    if (email.isNotEmpty || password.isNotEmpty) {
+    final model = UserModel(email: email, password: password, name: name);
+    if (email.isNotEmpty ||
+        password.isNotEmpty ||
+        name.isNotEmpty ||
+        conPassController.text.isNotEmpty) {
       UserLog().signInUser(email: email, password: password, model: model);
       Get.to(() => const SplashSreen());
     } else {

@@ -4,7 +4,6 @@ import 'package:chat_app_demo/Presentation/ChatPage/chat_bubble.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ChatPage extends StatelessWidget {
   ChatPage({super.key, required this.title, required this.reciverId});
@@ -17,12 +16,14 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 7, 101, 179),
+        foregroundColor: kWhite,
         title: Text(
           title,
-          style: const TextStyle(fontSize: 20, color: kGrey),
+          style: const TextStyle(
+              fontSize: 20, color: kWhite, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        forceMaterialTransparency: true,
       ),
       body: Column(
         children: [Expanded(child: getMsg()), msgInputMethod()],
@@ -97,7 +98,8 @@ class ChatPage extends StatelessWidget {
               height: 50,
               width: 50,
               decoration: const BoxDecoration(
-                  shape: BoxShape.circle, color: Colors.greenAccent),
+                  shape: BoxShape.circle,
+                  color: Color.fromARGB(255, 105, 139, 240)),
               child: const Center(
                 child: Icon(
                   Icons.arrow_upward,

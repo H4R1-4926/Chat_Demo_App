@@ -13,12 +13,12 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 7, 101, 179),
         title: const Text(
           'SETTINGS',
-          style: TextStyle(color: kGrey, letterSpacing: 5),
+          style: TextStyle(letterSpacing: 5),
         ),
-        forceMaterialTransparency: true,
-        foregroundColor: kDarkGrey,
+        foregroundColor: kWhite,
         centerTitle: true,
       ),
       drawer: DrawerWidget(

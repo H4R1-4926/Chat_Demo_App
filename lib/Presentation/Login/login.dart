@@ -3,7 +3,6 @@ import 'package:chat_app_demo/Infrastructure/User/user_repository.dart';
 import 'package:chat_app_demo/Presentation/SignIn/signin.dart';
 import 'package:chat_app_demo/Presentation/Splash/splash.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
@@ -33,7 +32,7 @@ class LoginPage extends StatelessWidget {
             height: 20,
           ),
           const Text(
-            'Welcome Back',
+            'Welcome',
             style: TextStyle(color: kGrey, fontSize: 18),
           ),
           const SizedBox(
@@ -74,13 +73,6 @@ class LoginPage extends StatelessWidget {
                   border: OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.circular(15))),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: 235, top: 8),
-            child: Text(
-              'Forget Password?',
-              style: TextStyle(fontSize: 15),
             ),
           ),
           const SizedBox(

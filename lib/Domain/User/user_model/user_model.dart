@@ -8,6 +8,7 @@ class UserModel with _$UserModel {
   factory UserModel({
     String? id,
     String? email,
+    String? name,
     String? password,
   }) = _UserModel;
 

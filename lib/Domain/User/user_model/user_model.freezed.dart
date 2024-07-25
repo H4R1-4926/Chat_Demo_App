@@ -22,6 +22,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 mixin _$UserModel {
   String? get id => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String? id, String? email, String? password});
+  $Res call({String? id, String? email, String? name, String? password});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   $Res call({
     Object? id = freezed,
     Object? email = freezed,
+    Object? name = freezed,
     Object? password = freezed,
   }) {
     return _then(_value.copyWith(
@@ -63,6 +65,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       password: freezed == password
           ? _value.password
@@ -80,7 +86,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String? email, String? password});
+  $Res call({String? id, String? email, String? name, String? password});
 }
 
 /// @nodoc
@@ -96,6 +102,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? email = freezed,
+    Object? name = freezed,
     Object? password = freezed,
   }) {
     return _then(_$UserModelImpl(
@@ -106,6 +113,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       password: freezed == password
           ? _value.password
@@ -118,7 +129,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
-  _$UserModelImpl({this.id, this.email, this.password});
+  _$UserModelImpl({this.id, this.email, this.name, this.password});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -128,11 +139,13 @@ class _$UserModelImpl implements _UserModel {
   @override
   final String? email;
   @override
+  final String? name;
+  @override
   final String? password;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, email: $email, password: $password)';
+    return 'UserModel(id: $id, email: $email, name: $name, password: $password)';
   }
 
   @override
@@ -142,13 +155,14 @@ class _$UserModelImpl implements _UserModel {
             other is _$UserModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, password);
+  int get hashCode => Object.hash(runtimeType, id, email, name, password);
 
   @JsonKey(ignore: true)
   @override
@@ -168,6 +182,7 @@ abstract class _UserModel implements UserModel {
   factory _UserModel(
       {final String? id,
       final String? email,
+      final String? name,
       final String? password}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -177,6 +192,8 @@ abstract class _UserModel implements UserModel {
   String? get id;
   @override
   String? get email;
+  @override
+  String? get name;
   @override
   String? get password;
   @override

@@ -25,6 +25,7 @@ class UserLog implements IUserRepo {
             .doc(user!.uid)
             .set({
           'id': user!.uid,
+          'name': model.name,
           'email': model.email,
           'password': model.password
         });
