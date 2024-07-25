@@ -22,137 +22,139 @@ class SignInPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Center(
-            child: SizedBox(
-              height: 100,
-              width: 100,
-              child: Center(
-                  child: Icon(
-                Icons.message,
-                size: 85,
-                color: kGrey,
-              )),
+            child: Flexible(
+              child: SizedBox(
+                height: 100,
+                width: 100,
+                child: Center(
+                    child: Icon(
+                  Icons.message,
+                  size: 85,
+                  color: kGrey,
+                )),
+              ),
             ),
           ),
           const SizedBox(
             height: 20,
           ),
-          const Text(
-            'Let\'s create an account for you',
-            style: TextStyle(color: kGrey, fontSize: 18),
+          const Flexible(
+            child: Text(
+              'Let\'s create an account for you',
+              style: TextStyle(color: kGrey, fontSize: 18),
+            ),
           ),
-          const SizedBox(
-            height: 25,
+          const Flexible(
+            child: SizedBox(
+              height: 25,
+            ),
           ),
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: TextFormField(
-                controller: nameController,
-                decoration: InputDecoration(
-                    fillColor: kWhite,
-                    hintText: 'Name',
-                    hintStyle: const TextStyle(color: kGrey),
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
-                        borderRadius: BorderRadius.circular(15)),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(15))),
-              ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: TextFormField(
+              controller: nameController,
+              decoration: InputDecoration(
+                  fillColor: kWhite,
+                  hintText: 'Name',
+                  hintStyle: const TextStyle(color: kGrey),
+                  filled: true,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
+                      borderRadius: BorderRadius.circular(15)),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(15))),
             ),
           ),
           const SizedBox(
             height: 15,
           ),
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: TextFormField(
-                controller: emailController,
-                decoration: InputDecoration(
-                    fillColor: kWhite,
-                    hintText: 'Email',
-                    hintStyle: const TextStyle(color: kGrey),
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
-                        borderRadius: BorderRadius.circular(15)),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(15))),
-              ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: TextFormField(
+              controller: emailController,
+              decoration: InputDecoration(
+                  fillColor: kWhite,
+                  hintText: 'Email',
+                  hintStyle: const TextStyle(color: kGrey),
+                  filled: true,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
+                      borderRadius: BorderRadius.circular(15)),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(15))),
             ),
           ),
           const SizedBox(
             height: 15,
           ),
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: TextFormField(
-                controller: passController,
-                decoration: InputDecoration(
-                    fillColor: kWhite,
-                    hintText: 'Password',
-                    hintStyle: const TextStyle(color: kGrey),
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
-                        borderRadius: BorderRadius.circular(15)),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(15))),
-              ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: TextFormField(
+              controller: passController,
+              decoration: InputDecoration(
+                  fillColor: kWhite,
+                  hintText: 'Password',
+                  hintStyle: const TextStyle(color: kGrey),
+                  filled: true,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
+                      borderRadius: BorderRadius.circular(15)),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(15))),
             ),
           ),
           const SizedBox(
             height: 15,
           ),
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: TextFormField(
-                controller: conPassController,
-                decoration: InputDecoration(
-                    fillColor: kWhite,
-                    hintText: 'Confirm Password',
-                    hintStyle: const TextStyle(color: kGrey),
-                    filled: true,
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
-                        borderRadius: BorderRadius.circular(15)),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(15))),
-              ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: TextFormField(
+              controller: conPassController,
+              decoration: InputDecoration(
+                  fillColor: kWhite,
+                  hintText: 'Confirm Password',
+                  hintStyle: const TextStyle(color: kGrey),
+                  filled: true,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: kBlack.withOpacity(0.3)),
+                      borderRadius: BorderRadius.circular(15)),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(15))),
             ),
           ),
           const SizedBox(
             height: 30,
           ),
-          GestureDetector(
-            onTap: () {
-              signIn();
-            },
-            child: Container(
-              height: 60,
-              width: 350,
-              decoration: BoxDecoration(
-                  color: kWhite, borderRadius: BorderRadius.circular(15)),
-              child: const Center(
-                child: Text(
-                  'SignIn',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: kDarkGrey),
+          Flexible(
+            child: GestureDetector(
+              onTap: () {
+                signIn();
+              },
+              child: Container(
+                height: 60,
+                width: 350,
+                decoration: BoxDecoration(
+                    color: kWhite, borderRadius: BorderRadius.circular(15)),
+                child: const Center(
+                  child: Text(
+                    'SignIn',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: kDarkGrey),
+                  ),
                 ),
               ),
             ),
           ),
-          const SizedBox(
-            height: 45,
+          const Flexible(
+            child: SizedBox(
+              height: 45,
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
